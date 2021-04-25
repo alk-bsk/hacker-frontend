@@ -57,7 +57,7 @@ export default function Hacker({ history,top }) {
                                 <NavLink to="/topHackers" activeClassName="active">Top hackers</NavLink></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href><span className="glyphicon glyphicon-user"></span>{sessionStorage.getItem("cred-user")}</a></li>
+                            <li><Link to="/hackers"><span className="glyphicon glyphicon-user"></span>{sessionStorage.getItem("cred-user")}</Link></li>
                             <li onClick={()=>sessionStorage.removeItem("cred-user")}><Link to="/"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
                         </ul>
                     </div>

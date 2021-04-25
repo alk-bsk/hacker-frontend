@@ -6,6 +6,7 @@ export default function HackerCard({hacker}){
         <div className="col-sm-4">
           <img className="img-circle" src={Aloke} alt="Generic placeholder" width="140" height="140" />
           <h1>{hacker.Name}</h1>
+          <br /><br/>
         </div>
     );
 }
