@@ -9,7 +9,8 @@ function App(props) {
     <Router>
         <Switch>
           <Route exact  path='/' component={Login} /> 
-          <Route exact  path='/hackers' component={Hacker} /> 
+          <Route exact  path='/hackers' render={()=><Hacker top={false} />} />
+          <Route exact  path='/topHackers' render={()=><Hacker top={true} />} /> 
           <Route exact  path='/hackers/:id' component={HackerDetails} />       
         </Switch>
     </Router>

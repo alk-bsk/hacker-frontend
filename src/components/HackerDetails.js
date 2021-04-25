@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link,NavLink} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from '../api/axiosConfig';
 import '../assets/css/Hacker.css';
@@ -8,6 +8,7 @@ import Aloke from '../assets/images/Aloke.jpg'
 export default function HackerDetails({history}) {
     const [hackers,setHackers]=useState();
     const [err,setErr]=useState();
+    const [active,setActive]=useState("home");
     let {id}=useParams();
 
     useEffect(() => {
@@ -16,11 +17,11 @@ export default function HackerDetails({history}) {
             history.push('/');
         }else{
             axios.get(`/hacker/${id}`).then(res=>{
-                setErr()
+                setErr();
                 setHackers(res.data);
             }).catch(error=>setErr(error.message));
         }
-    }, [])
+    }, [history, id])
     return(
         <div>
             <nav className="navbar navbar-inverse">
@@ -31,17 +32,19 @@ export default function HackerDetails({history}) {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">
+                        <Link className="navbar-brand" to="/hackers">
                         Hackers Rank
-                        </a>
+                        </Link>
                     </div>
                     <div className="collapse navbar-collapse" id="myNavbar">
                         <ul className="nav navbar-nav">
-                            <li className="active"><Link to="/hackers">Home</Link></li>
-                            <li><a href="#">About</a></li>
+                        <li className={active==="home"?"active":""} onClick={()=>setActive("home")}>
+                            <NavLink to="/hackers" activeClassName="active">Home</NavLink></li>
+                            <li className={active==="top"?"active":""} onClick={()=>setActive("top")}>
+                                <NavLink to="/topHackers" activeClassName="active">Top hackers</NavLink></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#"><span className="glyphicon glyphicon-user"></span>{sessionStorage.getItem("cred-user")}</a></li>
+                            <li><a href><span className="glyphicon glyphicon-user"></span>{sessionStorage.getItem("cred-user")}</a></li>
                             <li onClick={()=>sessionStorage.removeItem("cred-user")}><Link to='/'><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
                         </ul>
                     </div>
@@ -50,38 +53,114 @@ export default function HackerDetails({history}) {
 
             <div className="container text-center">
                 <br/>
-            <div class="row">
+            <div className="row">
                 {err && <h2>{err}</h2>}
                 {hackers && 
-                <div class="col-lg-12">
-                 <img class="img-circle" src={Aloke} alt="Generic placeholder image" width="140" height="140" />
+                <div className="col-lg-12">
+                 <img className="img-circle" src={Aloke} alt="Generic placeholder" width="140" height="140" />
                  <h1>{hackers.Name}</h1>
-                 <ul>
-                     <li><p>{"Profile Link : " +hackers["Profile Link"]}</p></li>
-                     <li><p>{"Location : " +hackers["Location"]}</p></li>
-                     <li><p>{"Education : " +hackers["Education"]}</p></li>
-                     <li><p>{"Challenges solved : " +hackers["Challenges solved"]}</p></li>
-                     <li><p>{"Solutions submitted : " +hackers["Solutions submitted"]}</p></li>
-                     <li><p>{"Solution accepted : " +hackers["Solution accepted"]}</p></li>
-                     <li><p>{"Overall Rank : " +hackers["Overall Rank"]}</p></li>
-                     <li><p>{"Followers : " +hackers["Followers"]}</p></li>
-                     <li><p>{"Following : " +hackers["Following"]}</p></li>
-                     <li><p>{"Competitive Percentile : " }</p>
-                        <ul>
-                            <li>{"Data Structures : "+hackers["Competitive Percentile"]["Data Structures"]}</li>
-                            <li>{"Algorithms : "+hackers["Competitive Percentile"]["Algorithms"]}</li>
-                            <li>{"C++ : "+hackers["Competitive Percentile"]["C++"]}</li>
-                            <li>{"Java : "+hackers["Competitive Percentile"]["Java"]}</li>
-                            <li>{"Python : "+hackers["Competitive Percentile"]["Python"]}</li>
-                            <li>{"HTML : "+hackers["Competitive Percentile"]["HTML"]}</li>
-                            <li>{"Javascript : "+hackers["Competitive Percentile"]["Javascript"]}</li>
-                            
-                        </ul>
-                     </li>
-                     <li><p>{"No of votes : " +hackers["No of votes"]}</p></li>
-                     <li><p>{"Timestamp : " +hackers["Timestamp"]}</p></li>
-                     <li><p>{"Device type : " +hackers["Device type"]}</p></li>
-                 </ul>
+                 <table className="table table-bordered table-striped" style={{backgroundColor:"#94ad87a8"}}>
+                <thead>
+                    <tr>
+                    <th scope="col">Key points</th>
+                    <th scope="col">Details</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    <tr>
+                    <th scope="row">Profile Link : </th>
+                    <td>{hackers["Profile Link"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Location : </th>
+                    <td>{hackers["Location"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Education : </th>
+                    <td>{hackers["Education"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Challenges solved : </th>
+                    <td>{hackers["Challenges solved"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Solutions submitted : </th>
+                    <td>{hackers["Solutions submitted"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Solution accepted : </th>
+                    <td>{hackers["Solution accepted"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Overall Rank : </th>
+                    <td>{hackers["Overall Rank"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Followers : </th>
+                    <td>{hackers["Followers"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Following : </th>
+                    <td>{hackers["Following"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Competitive Percentile : </th>
+                    <td>
+                        
+                        <table className="table table-bordered table-striped" >
+                        <thead>
+                            <tr>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                    <th scope="row">Data Structures : </th>
+                    <td>{hackers["Competitive Percentile"]["Data Structures"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Algorithms : </th>
+                    <td>{hackers["Competitive Percentile"]["Algorithms"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">C++ : </th>
+                    <td>{hackers["Competitive Percentile"]["C++"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Java : </th>
+                    <td>{hackers["Competitive Percentile"]["Java"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Python : </th>
+                    <td>{hackers["Competitive Percentile"]["Python"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">HTML : </th>
+                    <td>{hackers["Competitive Percentile"]["HTML"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Javascript : </th>
+                    <td>{hackers["Competitive Percentile"]["Javascript"]}</td>
+                    </tr>
+                        </tbody>
+                        </table>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">No of votes : </th>
+                    <td>{hackers["No of votes"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Timestamp : </th>
+                    <td>{hackers["Timestamp"]}</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">Device type : </th>
+                    <td>{hackers["Device type"]}</td>
+                    </tr>
+                </tbody>
+                </table>
                 </div>
                 }
 
