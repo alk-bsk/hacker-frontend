@@ -12,6 +12,7 @@ export default function Hacker({ history,top }) {
 
     useEffect(() => {
         setErr("");
+        setTopHack(3);
         let user = sessionStorage.getItem("cred-user");
         if (!user) {
             history.push('/');
