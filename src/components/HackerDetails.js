@@ -68,43 +68,43 @@ export default function HackerDetails({history}) {
                 </thead>
                 <tbody className="text-center">
                     <tr>
-                    <th scope="row">Profile Link : </th>
+                    <th scope="row">Profile Link</th>
                     <td>{hackers["Profile Link"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Location : </th>
+                    <th scope="row">Location</th>
                     <td>{hackers["Location"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Education : </th>
+                    <th scope="row">Education</th>
                     <td>{hackers["Education"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Challenges solved : </th>
+                    <th scope="row">Challenges solved</th>
                     <td>{hackers["Challenges solved"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Solutions submitted : </th>
+                    <th scope="row">Solutions submitted</th>
                     <td>{hackers["Solutions submitted"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Solution accepted : </th>
+                    <th scope="row">Solution accepted</th>
                     <td>{hackers["Solution accepted"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Overall Rank : </th>
+                    <th scope="row">Overall Rank</th>
                     <td>{hackers["Overall Rank"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Followers : </th>
+                    <th scope="row">Followers</th>
                     <td>{hackers["Followers"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Following : </th>
+                    <th scope="row">Following</th>
                     <td>{hackers["Following"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Competitive Percentile : </th>
+                    <th scope="row">Competitive Percentile</th>
                     <td>
                         
                         <table className="table table-bordered table-striped" >
@@ -116,31 +116,31 @@ export default function HackerDetails({history}) {
                         </thead>
                         <tbody>
                         <tr>
-                    <th scope="row">Data Structures : </th>
+                    <th scope="row">Data Structures</th>
                     <td>{hackers["Competitive Percentile"]["Data Structures"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Algorithms : </th>
+                    <th scope="row">Algorithms</th>
                     <td>{hackers["Competitive Percentile"]["Algorithms"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">C++ : </th>
+                    <th scope="row">C++</th>
                     <td>{hackers["Competitive Percentile"]["C++"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Java : </th>
+                    <th scope="row">Java</th>
                     <td>{hackers["Competitive Percentile"]["Java"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Python : </th>
+                    <th scope="row">Python</th>
                     <td>{hackers["Competitive Percentile"]["Python"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">HTML : </th>
+                    <th scope="row">HTML</th>
                     <td>{hackers["Competitive Percentile"]["HTML"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Javascript : </th>
+                    <th scope="row">Javascript</th>
                     <td>{hackers["Competitive Percentile"]["Javascript"]}</td>
                     </tr>
                         </tbody>
@@ -148,15 +148,15 @@ export default function HackerDetails({history}) {
                     </td>
                     </tr>
                     <tr>
-                    <th scope="row">No of votes : </th>
+                    <th scope="row">No of votes</th>
                     <td>{hackers["No of votes"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Timestamp : </th>
+                    <th scope="row">Timestamp</th>
                     <td>{hackers["Timestamp"]}</td>
                     </tr>
                     <tr>
-                    <th scope="row">Device type : </th>
+                    <th scope="row">Device type</th>
                     <td>{hackers["Device type"]}</td>
                     </tr>
                 </tbody>
